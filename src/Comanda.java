@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -9,7 +12,7 @@
  */
 public class Comanda {
     private String id;
-    private Arraylist<Produto> produtos = new Arraylist<>();
+    private ArrayList<Produto> produtos = new ArrayList<>();
     private double valorF;
 
     /**
@@ -17,20 +20,24 @@ public class Comanda {
      */
     public String getId() {
         return id;
-    }
-
-    /**
-     * @return the produtos
-     */
-    public Arraylist<Produto> getProdutos() {
-        return produtos;
-    }
+    }  
 
     /**
      * @return the valorF
      */
     public double getValorF() {
         return valorF;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    
+    
+
+    public void setValorF(double valorF) {
+        this.valorF = valorF;
     }
     
     
