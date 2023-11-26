@@ -5,6 +5,17 @@ public class Produto {
     private double preco;
     private int qntd;
 
+    public Produto(String id, String nome, double preco, int qnt){
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.qntd = qnt;
+    }
+    
+    public Produto(){
+        
+    }
+    
     public String getId() {
         return id;
     }

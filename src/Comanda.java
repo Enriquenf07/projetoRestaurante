@@ -1,20 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-/**
- *
- * @author enrique
- */
+import java.util.ArrayList;
+
 public class Comanda {
     private String id;
-    private Arraylist<Produto> produtos = new Arraylist<>();
+    final ArrayList<Produto> produtos = new ArrayList<>();
     private double valorF;
 
-    /**
-     * @return the id
-     */
+    public Comanda(String id){
+        this.id = id;
+    }
+    
+    public Comanda(){
+        
+    }
+    
+    
     public String getId() {
         return id;
     }
@@ -22,7 +22,7 @@ public class Comanda {
     /**
      * @return the produtos
      */
-    public Arraylist<Produto> getProdutos() {
+    public ArrayList<Produto> getProdutos() {
         return produtos;
     }
 
@@ -31,6 +31,10 @@ public class Comanda {
      */
     public double getValorF() {
         return valorF;
+    }
+    
+    public void adicionarProduto(Produto produto){
+        produtos.add(produto);
     }
     
     
