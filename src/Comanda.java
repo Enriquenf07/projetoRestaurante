@@ -1,9 +1,16 @@
 
+
+import java.util.ArrayList;
+
+
+
 import java.util.ArrayList;
 
 public class Comanda {
     private String id;
+
     final ArrayList<Produto> produtos = new ArrayList<>();
+
     private double valorF;
 
     public Comanda(String id){
@@ -17,6 +24,7 @@ public class Comanda {
     
     public String getId() {
         return id;
+
     }
 
     /**
@@ -26,11 +34,23 @@ public class Comanda {
         return produtos;
     }
 
+
     /**
      * @return the valorF
      */
     public double getValorF() {
         return valorF;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    
+    
+
+    public void setValorF(double valorF) {
+        this.valorF = valorF;
     }
     
     public void adicionarProduto(Produto produto){
