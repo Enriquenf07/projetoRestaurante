@@ -1,12 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-/**
- *
- * @author enrique
- */
+import java.util.ArrayList;
+
 public class ProdutoController {
+    final ArrayList<Produto> produtos = new ArrayList<>();
     
+    public ProdutoController(){
+        produtos.add(new Produto("1", "maça", 2, 1));
+    }
+    
+    public Produto pesquisarProduto(String id){
+        for(Produto p: produtos){
+            if (p.getId().equals(id)){
+                return p;
+            }
+            
+        }
+        return new Produto();
+    }
 }
