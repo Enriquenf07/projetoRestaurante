@@ -1,22 +1,17 @@
-
-
-import java.util.ArrayList;
-
-
+package model;
 
 import java.util.ArrayList;
 
 public class Comanda {
     private String id;
 
-    final ArrayList<Produto> produtos = new ArrayList<>();
-
+    public ArrayList<Produto> produtos = new ArrayList<>();
     private double valorF;
-
+    
     public Comanda(String id){
         this.id = id;
     }
-    
+
     public Comanda(){
         
     }
@@ -56,6 +51,7 @@ public class Comanda {
     public void adicionarProduto(Produto produto){
         produtos.add(produto);
     }
+
     
     
 }

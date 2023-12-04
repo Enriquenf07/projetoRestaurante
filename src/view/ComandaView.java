@@ -1,7 +1,17 @@
+package view;
+
+
+import model.Comanda;
+import model.Produto;
+import controller.ComandaController;
+import controller.MenuController;
+import controller.ProdutoController;
+
 public class ComandaView extends javax.swing.JFrame {
 
     public ProdutoController pCon = new ProdutoController();
     public ComandaController cCon = new ComandaController();
+    public MenuController menuCon = new MenuController();
     
     public ComandaView() {
         initComponents();
@@ -22,11 +32,13 @@ public class ComandaView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         produtosField = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
-        idSearchField = new javax.swing.JTextField();
+        searchField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -34,6 +46,12 @@ public class ComandaView extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        idField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idFieldActionPerformed(evt);
             }
         });
 
@@ -54,9 +72,9 @@ public class ComandaView extends javax.swing.JFrame {
             }
         });
 
-        idSearchField.addActionListener(new java.awt.event.ActionListener() {
+        searchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idSearchFieldActionPerformed(evt);
+                searchFieldActionPerformed(evt);
             }
         });
 
@@ -68,39 +86,58 @@ public class ComandaView extends javax.swing.JFrame {
 
         jLabel4.setText("COMANDA");
 
+        jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Limpar Comanda");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(158, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(valorField, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(103, 103, 103)
-                            .addComponent(jLabel3))
-                        .addComponent(jScrollPane1)
-                        .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(137, 137, 137)
-                            .addComponent(jLabel1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jLabel2)))
-                .addGap(176, 176, 176))
             .addGroup(layout.createSequentialGroup()
                 .addGap(265, 265, 265)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addComponent(idSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(158, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(valorField, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(103, 103, 103)
+                                .addComponent(jLabel3))
+                            .addComponent(jScrollPane1)
+                            .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(137, 137, 137)
+                                .addComponent(jLabel1)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(112, 112, 112)
+                            .addComponent(jLabel2))))
+                .addGap(176, 176, 176))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +145,7 @@ public class ComandaView extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(idSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jLabel4)
@@ -124,7 +161,11 @@ public class ComandaView extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(7, 7, 7)
                 .addComponent(valorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton4))
+                .addGap(37, 37, 37))
         );
 
         pack();
@@ -134,31 +175,40 @@ public class ComandaView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_valorFieldActionPerformed
 
-    private void idSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idSearchFieldActionPerformed
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_idSearchFieldActionPerformed
+    }//GEN-LAST:event_searchFieldActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Comanda comanda = cCon.getComandaById(idSearchField.getText());
+        Comanda comanda = cCon.getComandaById(searchField.getText());
         idField.setText(comanda.getId());
         StringBuilder s = new StringBuilder();
-        for (int i = 0; i < comanda.produtos.size(); i++){
+        for (int i = 0; i < comanda.getProdutos().size(); i++){
             Produto produto = comanda.getProdutos().get(i);
             s.append(produto.getNome());
             s.append(" R$");
             s.append(produto.getPreco());
             s.append("\n");
         }
-        
         produtosField.setText(s.toString());
         valorField.setText(Double.toString(comanda.getValorF()));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Produto produto = pCon.pesquisarProduto(idSearchField.getText());
-        cCon.adicionarProduto(produto, cCon.getComandaById(idField.getText()));
-        this.repaint();
+        cCon.adicionarProduto(idField.getText(), searchField.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        menuCon.voltarParaMenu(this);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void idFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idFieldActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        cCon.limparComanda(idField.getText());
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,15 +247,17 @@ public class ComandaView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField idField;
-    private javax.swing.JTextField idSearchField;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea produtosField;
+    private javax.swing.JTextField searchField;
     private javax.swing.JTextField valorField;
     // End of variables declaration//GEN-END:variables
 }
