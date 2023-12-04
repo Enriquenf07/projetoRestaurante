@@ -86,10 +86,10 @@ public class ComandaDAO{
         }
     }
     
-    public void limparComanda(){
+    public void limparComanda(String id){
         try {
             PreparedStatement stmt = con.prepareStatement("DELETE FROM comandaProduto c WHERE c.comanda_id = ?");
-            stmt.setInt(1, Integer.parseInt(comanda.getId()));
+            stmt.setInt(1, Integer.parseInt(id));
             stmt.executeQuery();
             stmt.close();
         }catch (Exception e) {

@@ -31,4 +31,9 @@ public class ComandaController {
         comanda.setValorF(valor);
         return comanda;
     }
+    
+    public void limparComanda(String id){
+        ComandaDAO dao = new ComandaDAO();
+        dao.limparComanda(id);
+    }
 }
